@@ -1,0 +1,66 @@
+<form class="user-table" (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
+  <div class="demo-only slds-p-left_large slds-p-top_large" style="width:800px">
+    <div class="slds-form slds-form_compound">
+      <fieldset class="slds-form-element">
+        <legend class="slds-form-element__label slds-form-element__legend slds-text-title_caps">Post detail</legend>
+        <div class="slds-form-element__group">
+          <div class="slds-form-element__row">
+            <div class="slds-form-element slds-size_1-of-2">
+              <label class="slds-form-element__label" for="input-01">User name</label>
+              <input type="text" id="input-01" class="slds-input" [(ngModel)]="postDetail.username" name="username" />
+            </div>
+            <div class="slds-form-element slds-size_1-of-2">
+              <label class="slds-form-element__label" for="input-02">Name</label>
+              <input type="text" id="input-02" class="slds-input" [(ngModel)]="postDetail.name" name="name" />
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="slds-form-element">
+        <legend class="slds-form-element__label slds-text-title_caps">Address</legend>
+        <div class="slds-form-element__group">
+          <div class="slds-form-element__row">
+            <div class="slds-form-element slds-size_1-of-1">
+              <label class="slds-form-element__label" for="input-03">Street</label>
+              <input type="text" id="input-03" class="slds-input" [(ngModel)]="postDetail.address.street" name="street" />
+            </div>
+          </div>
+          <div class="slds-form-element__row">
+            <div class="slds-form-element slds-size_1-of-2">
+              <label class="slds-form-element__label" for="input-04">City</label>
+              <input type="text" id="input-04" class="slds-input" [(ngModel)]="postDetail.address.city" name="city" />
+            </div>
+            <div class="slds-form-element slds-size_1-of-2">
+              <label class="slds-form-element__label" for="input-05">suite</label>
+              <input type="text" id="input-05" class="slds-input" [(ngModel)]="postDetail.address.suite" name="suite" />
+            </div>
+          </div>
+          <div class="slds-form-element__row">
+            <div class="slds-form-element slds-size_1-of-2">
+              <label class="slds-form-element__label" for="input-06">ZIP Code</label>
+              <input type="text" id="input-06" class="slds-input" [(ngModel)]="postDetail.address.zipcode" name="zipcode" />
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div class="slds-form-element">
+        <label class="slds-form-element__label" for="input-id-01">title</label>
+        <div class="slds-form-element__control">
+          <input type="text" id="input-id-01" class="slds-input" placeholder="Placeholder Text" [(ngModel)]="postDetail.title" (keyup)="onTitleKeyup($event)"
+            name="title" />
+        </div>
+      </div>
+      <div class="slds-form-element">
+        <label class="slds-form-element__label" for="input-id-02">Content</label>
+        <div class="slds-form-element__control">
+          <textarea id="input-id-02" class="slds-textarea" placeholder="Placeholder Text" [(ngModel)]="postDetail.body" name="body"></textarea>
+        </div>
+      </div>
+      <div class="slds-form-element">
+        <div class="slds-form-element__control">
+          <button type="submit" nglButton="success">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,17 @@
+<div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open left-site-bar" aria-hidden="false">
+  <div class="slds-panel__header">
+    <app-search></app-search>
+  </div>
+  <div class="slds-panel__body">
+    <div class="slds-grid slds-grid_vertical">
+      <div class="slds-col slds-scrollable_y" style="height: 30rem; width: 100%;">
+        <div *ngIf="isShowLeftMenuUser">
+          <app-user-left-menu></app-user-left-menu>
+        </div>
+        <div *ngIf="isShowLeftMenuPost">
+          <app-post-left-menu></app-post-left-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

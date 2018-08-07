@@ -1,0 +1,74 @@
+<div class="slds-grid slds-grid_vertical">
+  <div class="slds-col">
+    <div class="slds-grid slds-p-around_medium slds-grid_vertical-align-center">
+      <div class="slds-col slds-size_1-of-12">
+        <button type="button" nglButton="slds-button_icon" class="slds-float_right" size="medium" (click)="goBack()">
+          <ngl-icon icon="chevronleft" type="default" size="large"></ngl-icon>
+        </button>
+      </div>
+      <div class="slds-col slds-size_2-of-12">
+        <ngl-avatar class="size-custom-avatar" size="medium" type="circle" src="assets/images/avatar2.jpg" alt="avatar 2"></ngl-avatar>
+      </div>
+      <div class="slds-col slds-size_9-of-12 slds-p-left_small">
+        <p class="slds-truncate">Ice Cream Sandwich</p>
+      </div>
+    </div>
+    <nav class="slds-nav-vertical slds-p-left_large" aria-label="Sub page">
+      <div class="slds-nav-vertical__section">
+        <h2 id="entity-header" class="slds-nav-vertical__title slds-text-title_caps">ics.white</h2>
+      </div>
+      <div class="slds-nav-vertical__section">
+        <ul>
+          <li class="slds-nav-vertical__item" *ngFor="let album of albums" [ngClass]="{'slds-is-active' : selectedItemId == album.id}">
+            <a (click)="onSelectAlbum(album)" class="slds-nav-vertical__action slds-p-left_large" aria-describedby="folder-header">
+              <span class="slds-icon_container slds-icon-utility-open_folder slds-line-height_reset" title="Description of icon when needed">
+                <ngl-avatar class="size-custom-avatar" size="large" type="circle" src="assets/images/avatar2.jpg" alt="avatar 2"></ngl-avatar>
+              </span>{{album.title}}
+            </a>
+          </li>
+        </ul>
+
+      </div>
+      <div class="slds-nav-vertical__overflow">
+        <button class="slds-button slds-button_reset slds-nav-vertical__action slds-nav-vertical__action_overflow" aria-controls="search-results"
+          aria-expanded="false">
+          <svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright" xmlns:xlink="http://www.w3.org/1999/xlink" />
+          </svg>
+          <span class="slds-nav-vertical__action-text">Show More
+            <span class="slds-assistive-text">Folders</span>
+          </span>
+        </button>
+        <div id="search-results" class="slds-hide">
+          <ul>
+            <li class="slds-nav-vertical__item">
+              <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-describedby="folder-header">Overflow Item One</a>
+            </li>
+            <li class="slds-nav-vertical__item">
+              <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-describedby="folder-header">Overflow Item Two</a>
+            </li>
+            <li class="slds-nav-vertical__item">
+              <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-describedby="folder-header">Overflow Item Three</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="slds-nav-vertical__section">
+        <h2 id="entity-header" class="slds-nav-vertical__title slds-text-title_caps">Browse other accounts in Ice Cream Sandwich</h2>
+      </div>
+      <div class="slds-nav-vertical__section slds-grid_align-center">
+        <ul>
+          <li class="slds-nav-vertical__item">
+            <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-describedby="entity-header">ics.black</a>
+          </li>
+          <li class="slds-nav-vertical__item">
+            <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-describedby="entity-header">ics.pink</a>
+          </li>
+          <li class="slds-nav-vertical__item">
+            <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-describedby="entity-header">account name</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>

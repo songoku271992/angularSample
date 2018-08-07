@@ -1,0 +1,40 @@
+<nav class="slds-nav-vertical slds-p-left_large" aria-label="Sub page">
+  <div class="slds-nav-vertical__section">
+    <h2 id="entity-header" class="slds-nav-vertical__title slds-text-title_caps">ics.white</h2>
+  </div>
+  <div class="slds-nav-vertical__section">
+    <ul>
+      <li class="slds-nav-vertical__item " [ngClass]="{'slds-is-active' : selectedItem == user.id}" *ngFor="let user of users">
+        <a (click)="OnselectUser(user)" class="slds-nav-vertical__action slds-p-left_large" aria-describedby="folder-header">
+          <span class="slds-icon_container slds-icon-utility-open_folder slds-line-height_reset" title="Description of icon when needed">
+            <ngl-avatar class="size-custom-avatar" size="large" type="circle" src="assets/images/avatar2.jpg" alt="avatar 2"></ngl-avatar>
+          </span>{{user.username}}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="slds-nav-vertical__overflow">
+    <button class="slds-button slds-button_reset slds-nav-vertical__action slds-nav-vertical__action_overflow" aria-controls="search-results"
+      aria-expanded="false">
+      <svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright" xmlns:xlink="http://www.w3.org/1999/xlink" />
+      </svg>
+      <span class="slds-nav-vertical__action-text">Show More
+        <span class="slds-assistive-text">Folders</span>
+      </span>
+    </button>
+    <div id="search-results" class="slds-hide">
+      <ul>
+        <li class="slds-nav-vertical__item">
+          <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-describedby="folder-header">Overflow Item One</a>
+        </li>
+        <li class="slds-nav-vertical__item">
+          <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-describedby="folder-header">Overflow Item Two</a>
+        </li>
+        <li class="slds-nav-vertical__item">
+          <a href="javascript:void(0);" class="slds-nav-vertical__action" aria-describedby="folder-header">Overflow Item Three</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

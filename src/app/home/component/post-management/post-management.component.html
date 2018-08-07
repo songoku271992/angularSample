@@ -1,0 +1,24 @@
+<div *ngIf="isShowPostDetail">
+  <div class="slds-grid slds-p-around_medium slds-has-flexi-truncate user-table">
+    <table class="slds-table slds-table_bordered slds-table_resizable-cols slds-table_fixed-layout">
+      <tbody>
+        <tr *ngFor="let post of (posts)" class="slds-hint-parent">
+          <th scope="row">
+            <div class="slds-truncate" title="title">
+              <a href="javascript:void(0);" (click)="onSelectPostDetail(post)">{{post.title}}</a>
+            </div>
+          </th>
+          <td role="gridcell">
+            <div class="slds-truncate" title="body">{{post.body}}</div>
+          </td>
+          <td role="gridcell">
+            <div class="slds-truncate" title="$25k">23 Min</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div *ngIf="isShowFormDetail">
+  <app-post-detail [postDetail]="postDetail"></app-post-detail>
+</div>
