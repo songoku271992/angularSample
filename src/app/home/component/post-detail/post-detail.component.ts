@@ -1,52 +1,55 @@
-import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
 import { PostDetail } from '../../../models/post-detail';
 import { Post } from '../../../models/post';
 import { PostService } from '../../../services/post.service';
 import * as fromRoot from '../../../reducers';
 import * as actionPostDetail from '../../../actions/postDetail';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.css']
 })
-export class PostDetailComponent implements OnInit, OnChanges {
+
+export class PostDetailComponent implements OnChanges, OnDestroy {
+
   constructor(
     public postService: PostService,
-    private store: Store<fromRoot.State>
-  ) {
+    private store: Store<fromRoot.State>) {
   }
-  @Input() postDetail: PostDetail;
-  
-  dataPostDetail: PostDetail;
+
+  @Input() postDetail: PostDetail = null;
   submitted = false;
-  ngOnInit() {
-    this.dataPostDetail = this.postDetail;
-    console.log(this.dataPostDetail.address['street']);
-  }
-  ngOnChanges() {
-    console.log(this.dataPostDetail);
+  postServiceSubscription: Subscription;
+
+  ngOnChanges(change: SimpleChanges) {
+    console.log(change["postDetail"]);
   }
 
   onTitleKeyup(event: any) {
-    console.log(event.target.value);
     let postDetail = new PostDetail();
     postDetail.title = event.target.value;
-    console.log(postDetail);
     this.store.dispatch(new actionPostDetail.ChangeDataThePostDetail(postDetail));
   }
 
-  onSubmit($event) {
+  onSubmit() {
     let post = new Post();
     post.id = this.postDetail.id;
     post.body = this.postDetail.body;
     post.title = this.postDetail.title;
     post.userId = this.postDetail.userId;
-    this.postService.updatePost(post).subscribe(
+    this.postServiceSubscription = this.postService.updatePost(post).subscribe(
       () => console.log("final update")
     );
     this.submitted = false;
+  }
+
+  ngOnDestroy() {
+    if(this.postServiceSubscription) {
+      this.postServiceSubscription.unsubscribe();
+    }
   }
 
 }

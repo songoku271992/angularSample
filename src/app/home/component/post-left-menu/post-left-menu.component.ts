@@ -1,9 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from '../../../models/user';
-import { UserService } from '../../../services/user.service';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs';
 import * as fromRoot from '../../../reducers';
 import * as UserAction from '../../../actions/user';
 import * as PostDetailAction from '../../../actions/postDetail';
@@ -13,12 +9,10 @@ import * as PostDetailAction from '../../../actions/postDetail';
   templateUrl: './post-left-menu.component.html',
   styleUrls: ['./post-left-menu.component.css']
 })
-export class PostLeftMenuComponent implements OnInit {
+
+export class PostLeftMenuComponent {
 
   constructor(public store: Store<fromRoot.State>) { }
-
-  ngOnInit() {
-  }
 
   goBack() {
     this.store.dispatch(new UserAction.UserOpenLeftMenu());

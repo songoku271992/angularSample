@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from '../../../models/user';
-import { Post } from '../../../models/post';
 import { PostDetail } from '../../../models/post-detail';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import * as fromRoot from '../../../reducers';
 import { Store } from '@ngrx/store';
 import { PostService } from '../../../services/post.service';
@@ -13,6 +12,7 @@ import * as PostDetailAction from '../../../actions/postDetail';
   templateUrl: './post-management.component.html',
   styleUrls: ['./post-management.component.css']
 })
+
 export class PostManagementComponent implements OnInit, OnDestroy {
   user: User;
   posts: PostDetail[];
@@ -20,6 +20,8 @@ export class PostManagementComponent implements OnInit, OnDestroy {
   isShowPostDetail: Boolean = true;
   isShowFormDetail: Boolean = false;
   postDetailSubcrice: Subscription;
+  userSubcrice: Subscription;
+  
   constructor(
     public store: Store<fromRoot.State>,
     private postService: PostService
@@ -46,7 +48,7 @@ export class PostManagementComponent implements OnInit, OnDestroy {
     )
   }
 
-  userSubcrice: Subscription;
+  
 
   ngOnInit() {
     this.isShowPostDetail = true;
