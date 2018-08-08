@@ -1,13 +1,11 @@
 import { PostActionTypes, PostActionUnion } from '../actions/postDetail';
 import { PostDetail } from '../models/post-detail';
-import { stat } from 'fs';
-
 
 export function reducer(state: State = initialState, action: PostActionUnion) {
     console.log(action.payload);
     switch (action.type) {
         case PostActionTypes.CHANGE_DATA_POST_DETAIL:
-            return updateState(action.payload, false);
+            return updateState(action.payload, state.isShow);
         case PostActionTypes.ENABLE_POST_DETAIL:
             return updateState(state.postDetail, true);
         case PostActionTypes.DISABLE_POST_DETAIL:

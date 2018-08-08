@@ -20,6 +20,7 @@ export class PostDetailComponent implements OnInit, OnChanges {
   @Input() postDetail: PostDetail;
   
   dataPostDetail: PostDetail;
+  submitted = false;
   ngOnInit() {
     this.dataPostDetail = this.postDetail;
     console.log(this.dataPostDetail.address['street']);
@@ -41,10 +42,11 @@ export class PostDetailComponent implements OnInit, OnChanges {
     post.id = this.postDetail.id;
     post.body = this.postDetail.body;
     post.title = this.postDetail.title;
-    post.userId = this.postDetail.userId
+    post.userId = this.postDetail.userId;
     this.postService.updatePost(post).subscribe(
       () => console.log("final update")
     );
+    this.submitted = false;
   }
 
 }

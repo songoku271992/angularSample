@@ -1,5 +1,5 @@
 <form class="user-table" (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
-  <div class="demo-only slds-p-left_large slds-p-top_large" style="width:800px">
+  <div [hidden]="!submitted" class="demo-only slds-p-left_large slds-p-top_large" style="width:800px">
     <div class="slds-form slds-form_compound">
       <fieldset class="slds-form-element">
         <legend class="slds-form-element__label slds-form-element__legend slds-text-title_caps">Post detail</legend>
@@ -11,7 +11,8 @@
             </div>
             <div class="slds-form-element slds-size_1-of-2">
               <label class="slds-form-element__label" for="input-02">Name</label>
-              <input type="text" id="input-02" class="slds-input" [(ngModel)]="postDetail.name" name="name" />
+              <input type="text" id="input-02" class="slds-input" [(ngModel)]="postDetail.name" name="name" #spy>
+              <br>TODO: remove this: {{spy.className}}
             </div>
           </div>
         </div>
@@ -58,7 +59,86 @@
       </div>
       <div class="slds-form-element">
         <div class="slds-form-element__control">
-          <button type="submit" nglButton="success">Save</button>
+          <button type="submit" nglButton="success" [disabled]="!postForm.form.valid">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [hidden]="submitted" class="demo-only slds-p-left_large slds-p-top_large" style="width:800px">
+    <div class="slds-form slds-form_compound">
+      <fieldset class="slds-form-element">
+        <legend class="slds-form-element__label slds-form-element__legend slds-text-title_caps">Post detail</legend>
+        <div class="slds-form-element__group">
+          <div class="slds-form-element__row">
+            <div class="slds-form-element slds-size_1-of-2">
+              <label class="slds-form-element__label" for="input-01">User name</label>
+              <div class="slds-form-element__control slds-border_bottom">
+                <span class="slds-form-element__static">{{postDetail.username}}</span>
+              </div>
+            </div>
+            <div class="slds-form-element slds-size_1-of-2">
+              <label class="slds-form-element__label" for="input-02">Name</label>
+              <div class="slds-form-element__control slds-border_bottom">
+                <span class="slds-form-element__static">{{postDetail.name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="slds-form-element">
+        <legend class="slds-form-element__label slds-text-title_caps">Address</legend>
+        <div class="slds-form-element__group">
+          <div class="slds-form-element__row">
+            <div class="slds-form-element slds-size_1-of-1">
+              <label class="slds-form-element__label" for="input-03">Street</label>
+              <div class="slds-form-element__control slds-border_bottom">
+                <span class="slds-form-element__static">{{postDetail.address.street}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="slds-form-element__row">
+            <div class="slds-form-element slds-size_1-of-2">
+              <label class="slds-form-element__label" for="input-04">City</label>
+              <div class="slds-form-element__control slds-border_bottom">
+                <span class="slds-form-element__static">{{postDetail.address.city}}</span>
+              </div>
+            </div>
+            <div class="slds-form-element slds-size_1-of-2">
+              <label class="slds-form-element__label" for="input-05">suite</label>
+              <div class="slds-form-element__control slds-border_bottom">
+                <span class="slds-form-element__static">{{postDetail.address.suite}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="slds-form-element__row">
+            <div class="slds-form-element slds-size_1-of-2">
+              <label class="slds-form-element__label" for="input-06">ZIP Code</label>
+              <div class="slds-form-element__control slds-border_bottom">
+                <span class="slds-form-element__static">{{postDetail.address.zipcode}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div class="slds-form-element">
+        <label class="slds-form-element__label" for="input-id-01">title</label>
+        <div class="slds-form-element__control">
+          <div class="slds-form-element__control slds-border_bottom">
+            <span class="slds-form-element__static">{{postDetail.title}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="slds-form-element">
+        <label class="slds-form-element__label" for="input-id-02">Content</label>
+        <div class="slds-form-element__control">
+          <div class="slds-form-element__control slds-border_bottom">
+            <span class="slds-form-element__static">{{postDetail.body}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="slds-form-element">
+        <div class="slds-form-element__control">
+          <button type="button" nglButton="success" (click)="submitted=true">Edit</button>
         </div>
       </div>
     </div>
