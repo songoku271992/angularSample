@@ -27,10 +27,9 @@ export class PostService {
         return this.http.get<Post[]>(this.url + "?userId=" + userId);
     }
 
-    updatePost(post: Post) {
-        console.log(this.url + "/" + post.userId);
-        return this.http.put(this.url + "/" + post.userId, post).pipe(
-            tap(_ => this.log(`update post id=${post.id}`)),
+    updatePost(Post) {
+        return this.http.put(this.url + "/" + Post.userId, Post).pipe(
+            tap(_ => this.log(`update post id=${Post.id}`)),
             catchError(this.handleError<any>('update post'))
         );
     }

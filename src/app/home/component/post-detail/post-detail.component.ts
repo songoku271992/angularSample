@@ -35,7 +35,7 @@ export class PostDetailComponent implements OnChanges, OnDestroy {
   }
 
   onSubmit() {
-    let post = new Post();
+    let post = Post.getInstance();
     post.id = this.postDetail.id;
     post.body = this.postDetail.body;
     post.title = this.postDetail.title;
