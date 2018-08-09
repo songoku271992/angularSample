@@ -20,13 +20,12 @@ export class PostManagementComponent implements OnInit, OnDestroy {
   isShowPostDetail: Boolean = true;
   isShowFormDetail: Boolean = false;
   postDetailSubcrice: Subscription;
-  userSubcrice: Subscription;
-  
+  userSubcription: Subscription;
+
   constructor(
     public store: Store<fromRoot.State>,
-    private postService: PostService
-  ) {
-    this.userSubcrice = this.store.select(fromRoot.getInfoUserState).subscribe(
+    private postService: PostService) {
+    this.userSubcription = this.store.select(fromRoot.getInfoUserState).subscribe(
       state => {
         this.user = state
         if (this.user) {
@@ -48,8 +47,6 @@ export class PostManagementComponent implements OnInit, OnDestroy {
     )
   }
 
-  
-
   ngOnInit() {
     this.isShowPostDetail = true;
     this.isShowFormDetail = false;
@@ -57,29 +54,29 @@ export class PostManagementComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.userSubcrice.unsubscribe();
+    this.userSubcription.unsubscribe();
   }
 
   getPostByUserId(user: User) {
     this.postService.getPostsByUserId(user.id).subscribe(
       data => {
-        this.posts = data.map(
-          post => {
-            let postDetail1 = Object.assign(new PostDetail(), user, post);
-            console.log(postDetail1);
-            return postDetail1;
-          }
-        );
+        if (data) {
+          this.posts = data.map(
+            post => {
+              let postDetail1 = Object.assign(new PostDetail(), user, post);
+              console.log(postDetail1);
+              return postDetail1;
+            }
+          );
+        }
       }
     );
   }
 
   onSelectPostDetail(_postDetail: PostDetail) {
     this.postDetail = _postDetail;
-    console.log(this.postDetail.address.street);
     this.isShowPostDetail = false;
     this.isShowFormDetail = true;
     this.store.dispatch(new PostDetailAction.enablePostDetail());
   }
-
 }

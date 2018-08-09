@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './top-navigation-content.component.html',
   styleUrls: ['./top-navigation-content.component.css']
 })
+
 export class TopNavigationContentComponent implements OnInit {
 
   constructor() { }

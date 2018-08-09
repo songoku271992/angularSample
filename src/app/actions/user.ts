@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { User } from '../models/user'
+
 export const USERSELECT = '[User] select';
 export const USEROPENTLEFTMENU = '[User] open left menu user';
 export const USERCLOSETLEFTMENU = '[User] close left menu user';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of} from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
@@ -9,14 +9,16 @@ import { MessageService } from './message.service';
     providedIn: 'root'
 })
 export class PostService {
-    constructor(
-        private http: HttpClient,
-        private messageService: MessageService,
-    ) { }
     url = "https://jsonplaceholder.typicode.com/posts";
     private log(message: string) {
         this.messageService.add(`PostService: ${message}`);
     }
+
+    constructor(
+        private http: HttpClient,
+        private messageService: MessageService,
+    ) { }
+
     getPosts(): Observable<Post[]> {
         return this.http.get<Post[]>(this.url);
     }

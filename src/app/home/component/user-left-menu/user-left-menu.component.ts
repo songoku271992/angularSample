@@ -12,14 +12,15 @@ import * as UserAction from '../../../actions/user';
   templateUrl: './user-left-menu.component.html',
   styleUrls: ['./user-left-menu.component.css']
 })
+
 export class UserLeftMenuComponent implements OnInit, OnDestroy {
-  userSubcrice: Subscription;
+  userSubcription: Subscription;
   selectedItem: number;
   constructor(
     private userService: UserService,
     public store: Store<fromRoot.State>
   ) {
-    this.userSubcrice = this.store.select(fromRoot.getInfoUserState).subscribe(
+    this.userSubcription = this.store.select(fromRoot.getInfoUserState).subscribe(
       state => {
         console.log(state);
         this.user = state
@@ -32,9 +33,11 @@ export class UserLeftMenuComponent implements OnInit, OnDestroy {
   users: User[];
   user: User;
   userSubscription: Subscription;
+  
   ngOnInit() {
     this.getUsers();
   }
+
   getUsers() {
     this.userSubscription = this.userService.getListUser().subscribe(data => this.users = data);
   }

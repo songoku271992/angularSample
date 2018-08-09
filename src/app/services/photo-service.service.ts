@@ -11,6 +11,7 @@ import { catchError } from 'rxjs/operators';
 export class PhotoService {
     private handleError: HandleError;
     private urlPhoto = "https://jsonplaceholder.typicode.com/photos?albumId=";
+
     constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler) {
         this.handleError = httpErrorHandler.createHandleError('PhotoService');
     }
@@ -24,7 +25,6 @@ export class PhotoService {
     getListPhotoLimit(albumId: number, start: number, end: number): Observable<Photo[]>{
         let paramStart = "&_start=" + start;
         let paramEnd = "&_end=" + end;
-        console.log(albumId, start, end);
         return this.http.get<Photo[]>(this.urlPhoto + albumId + paramStart + paramEnd).pipe(
             catchError(this.handleError('getListPhotoLimit', []))
         );

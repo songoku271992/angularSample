@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { reducers } from './reducers/index';
 import { StoreModule } from '@ngrx/store';
@@ -25,4 +24,5 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   providers: [UserService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

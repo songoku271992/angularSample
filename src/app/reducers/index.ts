@@ -1,5 +1,3 @@
-import * as fromAmount from './amount';
-import * as fromCurrency from './currency';
 import * as fromUser from './user';
 import * as fromPost from './post';
 import * as fromPostDetail from './postDetail';
@@ -23,7 +21,6 @@ export interface State {
 }
 
 export const getUserState = (state: State) => state.user;
-
 export const getShowLeftMenuState = createSelector(getUserState, fromUser.getShowLeftMenuState);
 export const getInfoUserState = createSelector(getUserState, fromUser.getUserState);
 

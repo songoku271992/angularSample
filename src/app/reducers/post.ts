@@ -2,7 +2,6 @@ import * as postAction from '../actions/post';
 import { Post } from '../models/post';
 import { PostDetail } from '../models/post-detail';
 
-
 export function reducer(state: State = initialState, action: postAction.PostSelectAction) {
     switch (action.type) {
         case postAction.SELECT_POST:

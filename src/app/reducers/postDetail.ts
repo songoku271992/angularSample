@@ -2,7 +2,6 @@ import { PostActionTypes, PostActionUnion } from '../actions/postDetail';
 import { PostDetail } from '../models/post-detail';
 
 export function reducer(state: State = initialState, action: PostActionUnion) {
-    console.log(action.payload);
     switch (action.type) {
         case PostActionTypes.CHANGE_DATA_POST_DETAIL:
             return updateState(action.payload, state.isShow);

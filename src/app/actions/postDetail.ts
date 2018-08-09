@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { PostDetail } from '../models/post-detail';
+
 export enum PostActionTypes {
     CHANGE_DATA_POST_DETAIL = "[PostDetail]change data the post detail",
     ENABLE_POST_DETAIL = "[PostDetail]enable data the post detail",

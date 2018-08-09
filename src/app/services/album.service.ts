@@ -8,9 +8,11 @@ import { catchError } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
+
 export class AlbumService {
     private handleError: HandleError;
     urlAlbum = "https://jsonplaceholder.typicode.com/albums";
+    
     constructor(
         private http: HttpClient,
         httpErrorHandler: HttpErrorHandler) {

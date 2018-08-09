@@ -1,7 +1,6 @@
 import * as userAction from '../actions/user';
 import { User } from '../models/user';
 
-
 export function reducer(state: State = initialState, action: userAction.UserSelectAction) {
     switch (action.type) {
         case userAction.USERSELECT:
