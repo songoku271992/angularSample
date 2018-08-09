@@ -4,6 +4,10 @@ export class Post {
     private  _title: string;
     private  _body: string;
     private static instance: Post;
+    
+    private constructor() {
+
+    }
 
     static getInstance() {
         if(!Post.instance) {
